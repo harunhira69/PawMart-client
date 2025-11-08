@@ -22,7 +22,7 @@ const Navbar = () => {
 
         {/* DESKTOP MENU */}
         <div className="hidden lg:flex items-center gap-8 text-lg font-medium text-gray-700">
-          <Link to="/" className="hover:text-indigo-600 transition">Home</Link>
+          <Link to="/home" className="hover:text-indigo-600 transition">Home</Link>
           <Link to="/pets" className="hover:text-indigo-600 transition">Pets & Supplies</Link>
         </div>
 
