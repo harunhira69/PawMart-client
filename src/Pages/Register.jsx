@@ -3,16 +3,16 @@ import useAuth from "../hook/useAuth";
 import toast from "react-hot-toast";
 
 const Register = () => {
- const {signInGoogle} = useAuth();
+ const {signInGoogle,createUserEmail,updateUserProfile} = useAuth();
 
  const handleRegister = e=>{
   e.preventDefault();
    const form = e.currentTarget;
-  const name = e.target.name.value;
+  const displayName = e.target.name.value;
   const email = e.target.email.value;
   const password = e.target.password.value;
-  const photoUrl = e.target.photoUrl.value;
-    const passwordRegex =
+  const photoURL = e.target.photoUrl.value;
+     const passwordRegex =
      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^\w\s]).{6,}$/;
 
   if (!passwordRegex.test(password)) {
@@ -24,23 +24,36 @@ const Register = () => {
 
    const photoUrlRegex = /^(https?:\/\/.*\.(?:png|jpg|jpeg|gif|webp|svg))$/i;
 
-  if (!photoUrlRegex.test(photoUrl)) {
+  if (!photoUrlRegex.test(photoURL)) {
     toast.error("Please provide a valid image URL (jpg, png, jpeg, gif, svg, webp).");
     return;
   }
-
-
-  toast.success("Registered successfully");
+  createUserEmail(email,password)
+  .then(result=>{
+    console.log(result)
+    updateUserProfile(displayName, photoURL);
+        toast.success("User created successfully!", { id: "create-user" });
+        
   form.reset()
-  console.log({name,email,password,photoUrl})
+  })
+  .catch(err=>{
+     toast.error(err.message);
+  })
+
+ 
+
+
+
  }
 
  const handleGoogleSignIn = ()=>{
   signInGoogle()
   .then(result=>{
-    toast.success('Sign In successfully')
+    toast.success('successfully Registered')
 
     console.log(result.user)
+  }).catch(err=>{
+    toast.message(err.message)
   })
  }
 
