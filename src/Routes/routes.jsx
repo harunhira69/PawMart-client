@@ -4,6 +4,7 @@ import Login from "../Pages/Login";
 import Register from "../Pages/Register";
 import NotFound from "../Pages/NotFound";
 import BannerSection from "../Pages/BannerSection/BannerSection";
+import CategoryProducts from "../Pages/CategoryProducts/CategoryProducts";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -21,7 +22,8 @@ const router = createBrowserRouter([
         {
           path:'home',
           Component:BannerSection
-        }
+        },
+  { path: "category/:category", element: <CategoryProducts /> } ,
     ]
   },
 ]);

@@ -1,96 +1,45 @@
-import React, { useState } from "react";
+import React from "react";
+import { Link } from "react-router";
+import petsBanner from "../../assets/banner.jpg";
 
-const categories = [
-  {
-    id: "pets",
-    name: "Pets (Adoption)",
-    emoji: "🐾",
-    items: [
-      { id: 1, name: "Cat" },
-      { id: 2, name: "Dog" },
-      { id: 3, name: "Rabbit" },
-      { id: 4, name: "Bird" },
-    ],
-  },
-  {
-    id: "food",
-    name: "Pet Food",
-    emoji: "🍖",
-    items: [
-      { id: 1, name: "Cat Food" },
-      { id: 2, name: "Dog Food" },
-      { id: 3, name: "Bird Food" },
-    ],
-  },
-  {
-    id: "accessories",
-    name: "Accessories",
-    emoji: "🎒",
-    items: [
-      { id: 1, name: "Collar" },
-      { id: 2, name: "Cage" },
-      { id: 3, name: "Litter Box" },
-    ],
-  },
-  {
-    id: "care",
-    name: "Pet Care Products",
-    emoji: "🧴",
-    items: [
-      { id: 1, name: "Shampoo" },
-      { id: 2, name: "Vitamin" },
-      { id: 3, name: "Medicine" },
-    ],
-  },
+const Category = () => {
+ const categories = [
+  { name: "Pets (Adoption)", bg: "bg-pink-50" },
+  { name: "Pet Food", bg: "bg-yellow-50" }, // make sure DB also has this
+  { name: "Accessories", bg: "bg-green-50" },
+  { name: "Pet Care", bg: "bg-blue-50" } // match exactly the DB value
 ];
 
-const CategorySection = () => {
-  const [selectedCategory, setSelectedCategory] = useState(null);
 
   return (
-    <div className="p-6 max-w-5xl mx-auto">
-      <h2 className="text-2xl font-bold mb-4 text-center">
-        Browse Categories
-      </h2>
-
-      {/* MAIN CATEGORY CARDS */}
-      <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-        {categories.map((cat) => (
-          <div
-            key={cat.id}
-            className={`p-4 shadow-md rounded-xl cursor-pointer text-center border 
-            ${selectedCategory === cat.id ? "bg-red-500 text-white" : "bg-white"}`}
-            onClick={() => setSelectedCategory(cat.id)}
+    <section className="max-w-7xl mx-auto px-6 py-16 grid md:grid-cols-2 gap-10 items-center">
+      <div className="space-y-5">
+        {categories.map((cat, index) => (
+          <Link
+            key={index}
+            to={`/category/${encodeURIComponent(cat.name)}`}
           >
-            <div className="text-4xl">{cat.emoji}</div>
-            <div className="mt-2 font-semibold">{cat.name}</div>
-          </div>
+            <div
+              className={`flex items-center justify-between p-6 rounded-2xl shadow-md hover:shadow-lg transition cursor-pointer border-l-4 border-red-400 ${cat.bg}`}
+            >
+              <h3 className="text-xl font-semibold text-gray-700">
+                {cat.name}
+              </h3>
+              <span className="text-gray-500 text-2xl">›</span>
+            </div>
+          </Link>
         ))}
       </div>
 
-      {/* SECTION BELOW SHOWS SELECTED SUB-ITEMS */}
-      {selectedCategory && (
-        <div className="mt-6">
-          <h3 className="text-xl font-semibold mb-3">
-            {categories.find((c) => c.id === selectedCategory).name}
-          </h3>
-
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-            {categories
-              .find((c) => c.id === selectedCategory)
-              .items.map((item) => (
-                <div
-                  key={item.id}
-                  className="p-4 border rounded-xl shadow-sm text-center"
-                >
-                  {item.name}
-                </div>
-              ))}
-          </div>
-        </div>
-      )}
-    </div>
+      <div className="flex justify-center">
+        <img
+          src={petsBanner}
+          alt="Pets Banner"
+          className="w-full max-w-md rounded-3xl shadow-md object-cover"
+        />
+      </div>
+    </section>
   );
 };
 
-export default CategorySection;
+export default Category;
