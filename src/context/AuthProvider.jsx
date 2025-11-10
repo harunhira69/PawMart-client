@@ -8,6 +8,7 @@ import { createUserWithEmailAndPassword,
   signOut,
   updateProfile} from 'firebase/auth';
 import { auth } from '../firebase/firebase.config';
+import toast from 'react-hot-toast';
 
 const AuthProvider = ({children}) => {
     const[loading,setLoading] = useState(true);
@@ -45,10 +46,19 @@ const AuthProvider = ({children}) => {
       }
     },[])
 
-    const signOutUser = ()=>{
-      setLoading(true)
-      return signOut(auth)
-    }
+    const signOutUser = () => {
+  setLoading(true);
+  return signOut(auth)
+    .then(() => {
+      toast.success("Logged out successfully");
+    })
+    .catch((err) => {
+      toast.error(err.message);
+    })
+    .finally(() => {
+      setLoading(false);
+    });
+};
 
 
 

@@ -5,6 +5,9 @@ import "swiper/css/pagination";
 import "swiper/css/effect-fade";
 import { motion } from "framer-motion";
 import CategorySection from "../Category/Category";
+import RecentListings from "../RecentListings/RecentListings";
+import WhyAdopt from "../WhyAdopt/WhyAdopt";
+import PetHeroes from "../PetHeroes/PetHeroes";
 
 const slides = [
   {
@@ -39,7 +42,7 @@ const slides = [
   },
 ];
 
-const HeroSlider = () => {
+const BannerSection = () => {
   return (
     <div className="relative w-full rounded-2xl overflow-hidden shadow-xl">
       <Swiper
@@ -97,11 +100,11 @@ const HeroSlider = () => {
       </Swiper>
 
       <div>
-        <CategorySection></CategorySection>
+      
       </div>
     </div>
 
   );
 };
 
-export default HeroSlider;
+export default BannerSection;

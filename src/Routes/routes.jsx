@@ -5,12 +5,17 @@ import Register from "../Pages/Register";
 import NotFound from "../Pages/NotFound";
 import BannerSection from "../Pages/BannerSection/BannerSection";
 import CategoryProducts from "../Pages/CategoryProducts/CategoryProducts";
+import Home from "../Pages/Home/Home";
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Root></Root>,
     errorElement:<NotFound></NotFound>,
     children:[
+      {
+        index:true,
+        element:<Home></Home>
+      },
         {
             path:'login',
             Component:Login
@@ -21,7 +26,7 @@ const router = createBrowserRouter([
         },
         {
           path:'home',
-          Component:BannerSection
+          element:<Home></Home>
         },
   { path: "category/:category", element: <CategoryProducts /> } ,
     ]
