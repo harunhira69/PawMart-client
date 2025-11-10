@@ -1,0 +1,183 @@
+import React from "react";
+import { motion } from "framer-motion";
+import useAuth from "../../hook/useAuth";
+import useAxios from "../../hook/useAxios";
+import toast from "react-hot-toast";
+
+const AddListings = () => {
+    const {users} = useAuth()
+    console.log('add',users)
+    const axios = useAxios()
+
+    const handleAddListings =async e=>{
+        e.preventDefault();
+        console.log('working')
+       const listings = {
+        name : e.target.name.value,
+        category : e.target.category.value,
+        price : e.target.price.value,
+        location : e.target.location.value,
+        date:e.target.date.value,
+        image: e.target.imageURL.value,
+        description : e.target.description.value,
+        email:e.target.email.value,
+       }
+    //    console.log(listings)
+        // console.log({name,image,category,price,location,description})
+        try{
+           const res = await axios.post("/Listings", listings);
+if (res.data.insertedId) {
+    toast.success("Listing added successfully!");
+    e.target.reset();
+}
+
+        }
+        catch(err){
+            toast.error(err.message)
+        }
+
+    }
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 40 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6, ease: "easeOut" }}
+      className="max-w-4xl mx-auto bg-linear-to-br from-white to-blue-50 shadow-2xl rounded-3xl p-10 mt-12 border border-gray-200"
+    >
+      {/* Header Section */}
+      <motion.h1
+        initial={{ opacity: 0, scale: 0.95 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ delay: 0.2, duration: 0.5 }}
+        className="text-4xl font-extrabold text-center mb-4 text-gray-800 tracking-tight"
+      >
+        Add New Listing
+      </motion.h1>
+
+      <motion.p
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.3, duration: 0.5 }}
+        className="text-center text-gray-600 mb-12"
+      >
+        Pet owners or shop owners can add new listings (adoption or product).  
+        Please fill all required details below.
+      </motion.p>
+
+      {/* Form */}
+      <form
+      onSubmit={handleAddListings}
+
+       className="grid grid-cols-1 md:grid-cols-2 gap-8">
+
+        {/* Name */}
+        <div className="flex flex-col">
+          <label className="text-gray-800 font-semibold mb-1">
+            Product / Pet Name
+          </label>
+          <input
+            type="text"
+            name="name"
+            className="rounded-xl border border-gray-300 px-4 py-3 bg-white shadow-sm focus:ring-2 focus:ring-blue-300 outline-none transition-all"
+            placeholder="Golden Retriever / Cat Toy / Dog Food"
+          />
+        </div>
+
+        {/* Category */}
+        <div className="flex flex-col">
+          <label className="text-gray-800 font-semibold mb-1">Category</label>
+          <select
+            name="category"
+            className="rounded-xl border border-gray-300 px-4 py-3 bg-white shadow-sm focus:ring-2 focus:ring-blue-300 outline-none transition-all"
+          >
+            <option value="">Select Category</option>
+            <option value="Pets">Pets (Adoption)</option>
+            <option value="Food">Pet Food</option>
+            <option value="Accessories">Accessories</option>
+            <option value="Care Products">Care Products</option>
+          </select>
+        </div>
+
+        {/* Price */}
+        <div className="flex flex-col">
+          <label className="text-gray-800 font-semibold mb-1">Price</label>
+          <input
+            type="number"
+            name="price"
+            className="rounded-xl border border-gray-300 px-4 py-3 bg-white shadow-sm focus:ring-2 focus:ring-blue-300 outline-none transition-all"
+            placeholder="0 for adoption"
+          />
+        </div>
+
+        {/* Location */}
+        <div className="flex flex-col">
+          <label className="text-gray-800 font-semibold mb-1">Location</label>
+          <input
+          name="location"
+            type="text"
+            className="rounded-xl border border-gray-300 px-4 py-3 bg-white shadow-sm focus:ring-2 focus:ring-blue-300 outline-none transition-all"
+            placeholder="Dhaka / Chattogram / Sylhet"
+          />
+        </div>
+
+        {/* Image URL */}
+        <div className="flex flex-col">
+          <label className="text-gray-800 font-semibold mb-1">Image URL</label>
+          <input
+          name="imageURL"
+            type="text"
+            className="rounded-xl border border-gray-300 px-4 py-3 bg-white shadow-sm focus:ring-2 focus:ring-blue-300 outline-none transition-all"
+            placeholder="https://i.ibb.co/.../image.jpg"
+          />
+        </div>
+
+        {/* Pick-up Date */}
+        <div className="flex flex-col">
+          <label className="text-gray-800 font-semibold mb-1">Pick-up Date</label>
+          <input
+          name="date"
+            type="date"
+            className="rounded-xl border border-gray-300 px-4 py-3 bg-white shadow-sm focus:ring-2 focus:ring-blue-300 outline-none transition-all"
+          />
+        </div>
+
+        {/* Email */}
+        <div className="flex flex-col md:col-span-2">
+          <label className="text-gray-800 font-semibold mb-1">Email (Readonly)</label>
+          <input
+            type="email"
+            name="email"
+            readOnly
+            className="rounded-xl border border-gray-300 px-4 py-3 bg-gray-100 cursor-not-allowed shadow-sm"
+            defaultValue={users.email}
+          />
+        </div>
+
+        {/* Description */}
+        <div className="flex flex-col md:col-span-2">
+          <label className="text-gray-800 font-semibold mb-1">Description</label>
+          <textarea
+           name="description"
+            rows="4"
+            className="rounded-xl border border-gray-300 px-4 py-3 bg-white shadow-sm focus:ring-2 focus:ring-blue-300 outline-none transition-all"
+            placeholder="Write at least 40–50 words about the pet or product..."
+          ></textarea>
+        </div>
+
+        {/* Submit Button */}
+        <div className="md:col-span-2 text-center mt-4">
+          <motion.button
+            whileHover={{ scale: 1.03 }}
+            whileTap={{ scale: 0.97 }}
+            type="submit"
+            className="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-10 py-4 rounded-2xl transition-all shadow-xl w-full md:w-1/2"
+          >
+            Add Listing
+          </motion.button>
+        </div>
+      </form>
+    </motion.div>
+  );
+};
+
+export default AddListings;

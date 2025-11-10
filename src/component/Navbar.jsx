@@ -29,7 +29,7 @@ const Navbar = () => {
       {users && (
         <>
           <li>
-            <Link to="/add-listing"><FaPlus className="inline mr-1" /> Add Listing</Link>
+            <Link to="add-listing"><FaPlus className="inline mr-1" /> Add Listing</Link>
           </li>
           <li>
             <Link to="/my-listings"><FaClipboardList className="inline mr-1" /> My Listings</Link>

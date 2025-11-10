@@ -6,6 +6,9 @@ import NotFound from "../Pages/NotFound";
 import BannerSection from "../Pages/BannerSection/BannerSection";
 import CategoryProducts from "../Pages/CategoryProducts/CategoryProducts";
 import Home from "../Pages/Home/Home";
+import PrivateRoutes from "./PrivateRoutes";
+import AddListings from "../Pages/AddListings/AddListings";
+import AllPetsSupplies from "../Pages/AllPetsSupplies/AllPetsSupplies";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -29,6 +32,14 @@ const router = createBrowserRouter([
           element:<Home></Home>
         },
   { path: "category/:category", element: <CategoryProducts /> } ,
+  {path:'add-listing',
+    element:
+      <AddListings></AddListings>
+     },
+     {
+      path:'pets',
+      element:<AllPetsSupplies></AllPetsSupplies>
+     }
     ]
   },
 ]);
