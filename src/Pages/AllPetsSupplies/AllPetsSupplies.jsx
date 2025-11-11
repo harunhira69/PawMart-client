@@ -4,6 +4,7 @@ import toast from 'react-hot-toast';
 import useAuth from '../../hook/useAuth';
 import Loading from '../../component/Loading';
 import SearchInput from '../SearchInput/SearchInput';
+import { Link } from 'react-router';
 
 const AllPetsSupplies = () => {
     const axios = useAxios();
@@ -79,11 +80,11 @@ const AllPetsSupplies = () => {
             ? "Free"
             : `$${filter.price}`}
         </p>
-        <button
-          className="mt-auto bg-blue-500 text-white rounded p-2 hover:bg-blue-600 transition"
-        >
-          See Details
-        </button>
+      <Link to={`/product/${filter._id}`}>
+  <button className="mt-auto bg-blue-500 text-white rounded p-2 hover:bg-blue-600 transition">
+    See Details
+  </button>
+</Link>
       </div>
             )):( <p className="col-span-3 text-center text-gray-500">
             No products found.
