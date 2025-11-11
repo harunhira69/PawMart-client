@@ -6,6 +6,7 @@ import toast from "react-hot-toast";
 import Loading from "../../component/Loading";
 import CardDetails from "./CardDetails";
 import OrderForm from "../OrderForm/OrderForm";
+import AnimatedModal from "../AnimatedModal/AnimatedModal";
 
 const ProductDetails = () => {
   const { id } = useParams();
@@ -48,6 +49,7 @@ const ProductDetails = () => {
       buyerName: users?.displayName,
       buyerEmail: users?.email,
       listingId: id,
+      image:item.image,
       listingName: item.name,
       quantity: item.category === "Pets (Adoption)" ? 1 : form.quantity.value,
       price: item.price === "Free for Adoption" ? 0 : item.price,
@@ -72,19 +74,19 @@ const ProductDetails = () => {
     <div className="container mx-auto p-6">
 
 <CardDetails item={item} onOrderClick={handleOpenOrderModal} ></CardDetails>
- {isOpen && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-          <div className="bg-white p-6 rounded shadow-lg w-full max-w-md">
-            <h2 className="text-xl font-bold mb-4">Place Your Order</h2>
-            <OrderForm
+           <AnimatedModal 
+            isOpen={isOpen}
+  onClose={setIsOpen}
+  title="Place Your Order"
+            
+            >
+                <OrderForm
               item={item}
               users={users}
               handleOrder={handleOrder}
               closeModal={closeModal} 
             />
-          </div>
-        </div>
-      )}
+            </AnimatedModal>
 
    
 

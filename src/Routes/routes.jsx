@@ -10,6 +10,7 @@ import PrivateRoutes from "./PrivateRoutes";
 import AddListings from "../Pages/AddListings/AddListings";
 import AllPetsSupplies from "../Pages/AllPetsSupplies/AllPetsSupplies";
 import ProductDetails from "../Pages/ProductDetails/ProductDetails";
+import MyOrder from "../Pages/MyOrder/MyOrder";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -45,6 +46,11 @@ const router = createBrowserRouter([
   path: "product/:id",
   element: <ProductDetails />
 },
+
+{
+  path:'my-orders',
+  element:<MyOrder></MyOrder>
+}
     ]
   },
 ]);

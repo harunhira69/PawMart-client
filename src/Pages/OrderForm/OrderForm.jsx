@@ -1,8 +1,21 @@
 import React from "react";
 
 const OrderForm = ({ item, users, handleOrder, closeModal }) => {
+  
   return (
     <form onSubmit={handleOrder} className="space-y-4">
+         <div className="flex items-center gap-5">
+           <img
+          src={item.image}
+          alt={item.name}
+          className="w-16 h-16 object-cover rounded-md shadow-sm"
+        />
+         <div>
+          <h3 className="text-lg font-semibold">{item.name}</h3>
+          <p>${item.price}</p>
+         </div>
+         </div>
+
 
       <input
         type="text"

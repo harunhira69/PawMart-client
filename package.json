@@ -10,6 +10,9 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@radix-ui/react-dialog": "^1.1.15",
+    "@react-spring/web": "^10.0.3",
+    "@stitches/react": "^1.2.8",
     "@tailwindcss/vite": "^4.1.17",
     "axios": "^1.13.2",
     "daisyui": "^5.4.7",
