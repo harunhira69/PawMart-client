@@ -13,9 +13,11 @@ const AllPetsSupplies = () => {
     const[filterData,setFilterData] = useState([]);
     const[search,setSearch] = useState("");
     const [category,setCategory] = useState('All');
+    const [dataLoading, setDataLoading] = useState(true);
 
     useEffect(()=>{
         const fetchAll = async()=>{
+             setDataLoading(true);
             try{
                 const res = await axios.get('all-item');
                 console.log(res.data)
@@ -23,12 +25,15 @@ const AllPetsSupplies = () => {
                 setFilterData(res.data)
             }catch(err){
                 toast.error(err.message)
+            }finally{
+              setDataLoading(false);
             }
 
 
         };
         fetchAll()
-    },[axios])
+    },[])
+
 
     // filter and search
   useEffect(() => {
@@ -49,8 +54,8 @@ const AllPetsSupplies = () => {
     setFilterData(data);
   }, [search, category, items]);
 
+       if (loading || dataLoading) return <Loading />;
 
-    if(loading)return<Loading></Loading>
 
 
 

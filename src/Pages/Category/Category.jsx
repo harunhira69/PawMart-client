@@ -12,8 +12,9 @@ const Category = () => {
 
 
   return (
-    <section className="max-w-7xl mx-auto px-6 py-16 grid md:grid-cols-2 gap-10 items-center">
+    <section className=" px-6 py-16 grid md:grid-cols-2 gap-10 items-center">
       <div className="space-y-5">
+         <h2 className="text-3xl font-bold text-gray-800 mb-3">Browse by Category</h2>
         {categories.map((cat, index) => (
           <Link
             key={index}
@@ -31,7 +32,7 @@ const Category = () => {
         ))}
       </div>
 
-      <div className="flex justify-center">
+      <div className="flex justify-center ">
         <img
           src={petsBanner}
           alt="Pets Banner"

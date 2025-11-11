@@ -4,9 +4,30 @@
 *{
       font-family: "Lora", serif;
 }
-.input {
+/* .input {
   @apply w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:outline-none transition;
+} */
+
+
+.btn-gradient {
+  @apply text-white rounded-2xl px-5 py-2 font-semibold shadow-lg transition-all duration-300;
+  background: linear-gradient(90deg, #4f46e5, #8b5cf6, #ec4899);
 }
+.text-gradient {
+  background: linear-gradient(to right, #6366f1, #8b5cf6, #ec4899); /* Indigo → Purple → Pink */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+}
+.btn-gradient:hover {
+  background: linear-gradient(90deg, #ec4899, #8b5cf6, #4f46e5);
+}
+
+.btn-gradient-active {
+  @apply shadow-2xl;
+}
+
 
 
 

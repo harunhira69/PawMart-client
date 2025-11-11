@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router";
+import { Link, NavLink } from "react-router";
 import { IoLogOut } from "react-icons/io5";
 import { FaUser, FaPlus, FaClipboardList } from "react-icons/fa6";
 import useAuth from "../hook/useAuth";
 
 const Navbar = () => {
-  const { users, signOutUser,loading } = useAuth();
+  const { users, signOutUser, loading } = useAuth();
 
   const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -20,22 +20,51 @@ const Navbar = () => {
 
   const menuItems = (
     <>
+      <NavLink
+        to="/"
+        className={({ isActive }) =>
+          isActive ? "btn-gradient btn-gradient-active" : "px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition"
+        }
+      >
+        Home
+      </NavLink>
       <li>
-        <Link to="/">Home</Link>
-      </li>
-      <li>
-        <Link to="/pets">Pets & Supplies</Link>
+        <NavLink to="/pets"
+          className={({ isActive }) =>
+            isActive ? "btn-gradient btn-gradient-active" : "px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition"
+          }
+        >
+
+
+          Pets & Supplies</NavLink>
       </li>
       {users && (
         <>
           <li>
-            <Link to="add-listing"><FaPlus className="inline mr-1" /> Add Listing</Link>
+            <NavLink
+              to="add-listing"
+              className={({ isActive }) =>
+                isActive ? "btn-gradient btn-gradient-active" : "px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition"
+              }
+
+
+            ><FaPlus className="inline mr-1" /> Add Listing</NavLink>
           </li>
           <li>
-            <Link to="/my-listings"><FaClipboardList className="inline mr-1" /> My Listings</Link>
+            <Link
+             to="/my-listings"
+                className={({ isActive }) =>
+                isActive ? "btn-gradient btn-gradient-active" : "px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition"
+              }
+             ><FaClipboardList className="inline mr-1" /> My Listings</Link>
           </li>
           <li>
-            <Link to="/my-orders">My Orders</Link>
+            <NavLink 
+            to="/my-orders"
+               className={({ isActive }) =>
+                isActive ? "btn-gradient btn-gradient-active" : "px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition"
+              }
+            >My Orders</NavLink>
           </li>
         </>
       )}
@@ -58,7 +87,7 @@ const Navbar = () => {
         <li className="text-sm font-bold">{users.displayName}</li>
         <li className="text-xs">{users.email}</li>
         <li className="mt-3">
-          <button onClick={signOutUser} className="btn btn-xs bg-gradient-to-r from-pink-500 to-red-500 text-white w-full">
+          <button onClick={signOutUser} className="btn btn-xs bg-linear-to-r from-pink-500 to-red-500 text-white w-full">
             <IoLogOut /> Logout
           </button>
         </li>
@@ -76,7 +105,9 @@ const Navbar = () => {
             alt="logo"
             className="w-10 h-10"
           />
-          <h1 className="text-2xl font-bold text-indigo-600">PawMart</h1>
+          <h1 className="text-2xl md:text-3xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 hover:scale-105 transition-transform duration-300">
+            PawMart
+          </h1>
         </div>
 
         {/* DESKTOP MENU */}
@@ -130,11 +161,13 @@ const Navbar = () => {
             </label>
             {!users ? (
               <>
-                <Link to="/login" className="px-3 py-1 bg-indigo-600 text-white rounded-xl shadow hover:bg-indigo-700 transition">Login</Link>
-                <Link to="/register" className="px-3 py-1 border border-indigo-600 text-indigo-600 rounded-xl shadow hover:bg-indigo-50 transition">Register</Link>
+                <Link to="/login"
+                  className="btn-gradient" >Login</Link>
+                <Link to="/register"
+                  className="btn-gradient">Register</Link>
               </>
             ) : (
-              <button onClick={signOutUser} className="px-3 py-1 bg-gradient-to-r from-pink-500 to-red-500 text-white rounded-xl shadow">Logout</button>
+              <button onClick={signOutUser} className="px-3 py-1 bg-linear-to-r from-pink-500 to-red-500 text-white rounded-xl shadow">Logout</button>
             )}
           </div>
         </div>
