@@ -1,15 +1,16 @@
 import React, { useEffect, useState } from "react";
 import useAuth from "../../hook/useAuth";
-import useAxios from "../../hook/useAxios";
+
 import toast from "react-hot-toast";
 import Loading from "../../component/Loading";
 import { motion } from "framer-motion";
 import Swal from "sweetalert2";
 import UpdateListings from "../UpdateListings/UpdateListings";
+import useAxiosSecure from "../../hook/useAxiosSecure";
 
 const MyListings = () => {
   const { users, loading } = useAuth();
-  const axios = useAxios();
+  const axios = useAxiosSecure();
   const [listings, setListings] = useState([]);
   const [selectedListing, setSelectedListing] = useState(null);
   const [modalOpen, setModalOpen] = useState(false);

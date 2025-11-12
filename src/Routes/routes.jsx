@@ -37,7 +37,9 @@ const router = createBrowserRouter([
   { path: "category/:category", element: <CategoryProducts /> } ,
   {path:'add-listing',
     element:
-      <AddListings></AddListings>
+     <PrivateRoutes>
+       <AddListings></AddListings>
+     </PrivateRoutes>
      },
      {
       path:'pets',
@@ -45,16 +47,22 @@ const router = createBrowserRouter([
      },
    {
   path: "product/:id",
-  element: <ProductDetails />
+  element: <PrivateRoutes>
+    <ProductDetails />
+  </PrivateRoutes>
 },
 
 {
   path:'my-orders',
-  element:<MyOrder></MyOrder>
+  element:<PrivateRoutes>
+    <MyOrder></MyOrder>
+  </PrivateRoutes>
 },
 {
   path:'my-listings',
-  element:<MyListings></MyListings>
+  element:<PrivateRoutes>
+    <MyListings></MyListings>
+  </PrivateRoutes>
 }
     ]
   },
