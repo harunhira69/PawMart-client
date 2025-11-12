@@ -163,6 +163,7 @@ const MyOrder = () => {
               <th className="border px-3 py-2">Address</th>
               <th className="border px-3 py-2">Date</th>
               <th className="border px-3 py-2">Phone</th>
+              
             </tr>
           </thead>
           <tbody>
