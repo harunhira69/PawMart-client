@@ -1,9 +1,10 @@
 import React, { Suspense } from 'react';
-import Navbar from '../component/Navbar';
+
 import Footer from '../component/Footer';
 import { Outlet } from 'react-router';
 import { Toaster } from 'react-hot-toast';
 import Loading from '../component/Loading';
+import Navbar from '../component/Navbar/Navbar';
 
 const Root = () => {
   return (
