@@ -72,7 +72,10 @@ const AddListings = () => {
             type="text"
             name="name"
             placeholder="Golden Retriever / Cat Toy / Dog Food"
-            className="rounded-2xl border border-gray-300 px-4 py-3 bg-white shadow-sm focus:ring-2 focus:ring-indigo-400 outline-none transition-all"
+                   className="rounded-2xl border border-gray-300 dark:border-gray-600 px-4 py-3 
+bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 
+placeholder-indigo-400 dark:placeholder-purple-400 
+shadow-sm focus:ring-2 focus:ring-indigo-400 outline-none transition-all"
             required
           />
         </div>
@@ -82,7 +85,10 @@ const AddListings = () => {
           <label className="text-gray-800 font-semibold mb-1">Category</label>
           <select
             name="category"
-            className="rounded-2xl border border-gray-300 px-4 py-3 bg-white shadow-sm focus:ring-2 focus:ring-indigo-400 outline-none transition-all"
+              className="rounded-2xl border border-gray-300 dark:border-gray-600 px-4 py-3 
+bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 
+placeholder-indigo-400 dark:placeholder-purple-400 
+shadow-sm focus:ring-2 focus:ring-indigo-400 outline-none transition-all"
             required
           >
             <option value="">Select Category</option>
@@ -100,7 +106,10 @@ const AddListings = () => {
             type="number"
             name="price"
             placeholder="0 for adoption"
-            className="rounded-2xl border border-gray-300 px-4 py-3 bg-white shadow-sm focus:ring-2 focus:ring-indigo-400 outline-none transition-all"
+             className="rounded-2xl border border-gray-300 dark:border-gray-600 px-4 py-3 
+bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 
+placeholder-indigo-400 dark:placeholder-purple-400 
+shadow-sm focus:ring-2 focus:ring-indigo-400 outline-none transition-all"
             required
           />
         </div>
@@ -112,7 +121,10 @@ const AddListings = () => {
             type="text"
             name="location"
             placeholder="Dhaka / Chattogram / Sylhet"
-            className="rounded-2xl border border-gray-300 px-4 py-3 bg-white shadow-sm focus:ring-2 focus:ring-indigo-400 outline-none transition-all"
+               className="rounded-2xl border border-gray-300 dark:border-gray-600 px-4 py-3 
+bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 
+placeholder-indigo-400 dark:placeholder-purple-400 
+shadow-sm focus:ring-2 focus:ring-indigo-400 outline-none transition-all"
             required
           />
         </div>
@@ -124,7 +136,10 @@ const AddListings = () => {
             type="text"
             name="imageURL"
             placeholder="https://i.ibb.co/.../image.jpg"
-            className="rounded-2xl border border-gray-300 px-4 py-3 bg-white shadow-sm focus:ring-2 focus:ring-indigo-400 outline-none transition-all"
+              className="rounded-2xl border border-gray-300 dark:border-gray-600 px-4 py-3 
+bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 
+placeholder-indigo-400 dark:placeholder-purple-400 
+shadow-sm focus:ring-2 focus:ring-indigo-400 outline-none transition-all"
             required
           />
         </div>
@@ -135,7 +150,10 @@ const AddListings = () => {
           <input
             type="date"
             name="date"
-            className="rounded-2xl border border-gray-300 px-4 py-3 bg-white shadow-sm focus:ring-2 focus:ring-indigo-400 outline-none transition-all"
+                 className="rounded-2xl border border-gray-300 dark:border-gray-600 px-4 py-3 
+bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 
+placeholder-indigo-400 dark:placeholder-purple-400 
+shadow-sm focus:ring-2 focus:ring-indigo-400 outline-none transition-all"
             required
           />
         </div>
@@ -148,7 +166,10 @@ const AddListings = () => {
             name="email"
             readOnly
             defaultValue={users.email}
-            className="rounded-2xl border border-gray-300 px-4 py-3 bg-gray-100 cursor-not-allowed shadow-sm"
+                className="rounded-2xl border border-gray-300 dark:border-gray-600 px-4 py-3 
+bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 
+placeholder-indigo-400 dark:placeholder-purple-400 
+shadow-sm focus:ring-2 focus:ring-indigo-400 outline-none transition-all"
           />
         </div>
 
@@ -159,7 +180,10 @@ const AddListings = () => {
             name="description"
             rows="4"
             placeholder="Write at least 40–50 words about the pet or product..."
-            className="rounded-2xl border border-gray-300 px-4 py-3 bg-white shadow-sm focus:ring-2 focus:ring-indigo-400 outline-none transition-all"
+              className="rounded-2xl border border-gray-300 dark:border-gray-600 px-4 py-3 
+bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 
+placeholder-indigo-400 dark:placeholder-purple-400 
+shadow-sm focus:ring-2 focus:ring-indigo-400 outline-none transition-all"
             required
           ></textarea>
         </div>

@@ -14,7 +14,9 @@ const Category = () => {
   return (
     <section className=" px-6 py-16 grid md:grid-cols-2 gap-10 items-center">
       <div className="space-y-5">
-         <h2 className="text-3xl font-bold text-gray-800 mb-3">Browse by Category</h2>
+        <h2 className="text-3xl font-bold mb-3 text-indigo-600 dark:text-indigo-400">
+  Browse by Category
+</h2>
         {categories.map((cat, index) => (
           <Link
             key={index}

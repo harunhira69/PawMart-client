@@ -37,7 +37,8 @@ const RecentListings = () => {
 
   return (
     <section className="my-16 px-4 md:px-8">
-      <h2 className="text-4xl md:text-5xl font-bold text-center mb-12 text-gray-900 dark:text-gray-100">
+      <h2 className="text-4xl md:text-5xl font-bold text-center mb-12
+       text-indigo-600 dark:text-indigo-400">
         Recent{" "}
         <span className="bg-linear-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text text-transparent">
           Listings

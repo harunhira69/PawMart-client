@@ -30,7 +30,7 @@ const AllPetsSupplies = () => {
       }
     };
     fetchAll();
-  }, []);
+  }, [axios]);
 
   // Filter and Search Logic
   useEffect(() => {

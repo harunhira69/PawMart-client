@@ -1,60 +1,51 @@
 import axios from "axios";
-import useAuth from "./useAuth";
 import { useEffect } from "react";
 import { useNavigate } from "react-router";
+import useAuth from "./useAuth";
 
 const instance = axios.create({
-  baseURL: 'http://localhost:3000',
-  
+  baseURL: "http://localhost:3000", // change to your production base URL
 });
 
 const useAxiosSecure = () => {
+  const { users, signOutUser } = useAuth();
+  const navigate = useNavigate();
 
-    const navigate = useNavigate();
-    const { user, signOutUser } = useAuth();
-
-
-
-    useEffect(() => {
-
-        //  request interceptor
-
-        const requestInterceptor = instance.interceptors.request.use((config => {
-
-            const token = user?.accessToken; 
-            if (token) {
-                config.headers.authorization = `Bearer ${token}`;
-            }
-
-            return config;
-        }));
-
-        // response interceptor 
-
-        instance.interceptors.response.use(res => {
-
-            return res;
-        }) , (error) => {
-
-            const status = error.status
-            if(status === 401 || status === 403){
-
-            console.log('log out the user for bad request')
-            signOutUser()
-            .then (() => {
-                navigate('/register')
-            })
+  useEffect(() => {
+    // Attach token before request
+    const requestInterceptor = instance.interceptors.request.use(
+      async (config) => {
+        if (users) {
+          const token = await users.getIdToken?.();
+          if (token) {
+            config.headers.Authorization = `Bearer ${token}`;
+          }
         }
-        
-        };
-        return () => {
-            instance.interceptors.request.eject(requestInterceptor);
-            instance.interceptors.response.eject();
+        return config;
+      },
+      (error) => Promise.reject(error)
+    );
+
+    // Handle 401/403 globally
+    const responseInterceptor = instance.interceptors.response.use(
+      (response) => response,
+      (error) => {
+        const status = error.response?.status;
+        if (status === 401 || status === 403) {
+          console.log("Unauthorized! Logging out...");
+          signOutUser().then(() => navigate("/register"));
         }
+        return Promise.reject(error);
+      }
+    );
 
-    }, [user, signOutUser, navigate]);
+    return () => {
+      instance.interceptors.request.eject(requestInterceptor);
+      instance.interceptors.response.eject(responseInterceptor);
+    };
+  }, [users, signOutUser, navigate]);
 
-    return instance;
+  return instance;
 };
 
 export default useAxiosSecure;

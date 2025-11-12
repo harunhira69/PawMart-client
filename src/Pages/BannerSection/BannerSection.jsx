@@ -1,9 +1,11 @@
+import { useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination, EffectFade } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/effect-fade";
 import { motion } from "framer-motion";
+import { Typewriter } from "react-simple-typewriter";
 import CategorySection from "../Category/Category";
 import RecentListings from "../RecentListings/RecentListings";
 import WhyAdopt from "../WhyAdopt/WhyAdopt";
@@ -34,8 +36,8 @@ const slides = [
     subtitle: "Watch your pets thrive with fun and care every day.",
     img: "https://i.ibb.co.com/jvSdGCMB/Lucid-Origin-Two-playful-dogs-running-in-a-green-park-with-col-2.jpg",
   },
-    {
-    id: 4,
+  {
+    id: 5,
     title: "Pets and Their Families.",
     subtitle: "Build unforgettable memories with your furry friends.",
     img: "https://i.ibb.co.com/6RfsMybH/Lucid-Origin-A-family-parents-and-kids-playing-with-a-cat-and-0.jpg",
@@ -43,6 +45,8 @@ const slides = [
 ];
 
 const BannerSection = () => {
+  const [activeIndex, setActiveIndex] = useState(0); 
+
   return (
     <div className="relative w-full rounded-2xl overflow-hidden shadow-xl">
       <Swiper
@@ -51,22 +55,23 @@ const BannerSection = () => {
         pagination={{ clickable: true }}
         effect="fade"
         loop={true}
+        onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)} 
         className="h-[550px]"
       >
-        {slides.map((slide) => (
+        {slides.map((slide, index) => (
           <SwiperSlide key={slide.id}>
             <div className="relative w-full h-full">
-              {/* Background Image */}
+           
               <img
                 src={slide.img}
                 alt={slide.title}
                 className="w-full h-full object-cover brightness-75 transition-all duration-700 hover:scale-105"
               />
 
-              {/* Subtle Overlay */}
+           
               <div className="absolute inset-0 bg-linear-to-t from-black/70 via-black/40 to-black/10"></div>
 
-              {/* Text Content */}
+          
               <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-6">
                 <motion.h2
                   initial={{ opacity: 0, y: 30 }}
@@ -74,7 +79,18 @@ const BannerSection = () => {
                   transition={{ duration: 0.8 }}
                   className="text-white text-4xl sm:text-5xl font-extrabold mb-3 drop-shadow-lg"
                 >
-                  {slide.title}
+              
+                  {activeIndex === index && (
+                    <Typewriter
+                      words={[slide.title]}
+                      loop={1}
+                      cursor
+                      cursorStyle="|"
+                      typeSpeed={70}
+                      deleteSpeed={50}
+                      delaySpeed={1000}
+                    />
+                  )}
                 </motion.h2>
 
                 <motion.p
@@ -98,12 +114,7 @@ const BannerSection = () => {
           </SwiperSlide>
         ))}
       </Swiper>
-
-      <div>
-      
-      </div>
     </div>
-
   );
 };
 

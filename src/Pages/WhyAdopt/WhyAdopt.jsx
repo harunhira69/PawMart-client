@@ -30,8 +30,8 @@ const WhyAdopt = () => {
     <section className="py-20">
       <div className=" px-6 text-center">
         {/* Heading */}
-        <h2 className="text-4xl md:text-5xl font-bold mb-6 text-gray-800">
-          Why Adopt from{" "}
+        <h2  className="text-4xl md:text-5xl font-bold mb-6 text-indigo-600 dark:text-indigo-400">
+  Why Adopt from{" "}
           <span className="bg-linear-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text text-transparent">
             PawMart?
           </span>
