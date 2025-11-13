@@ -1,12 +1,26 @@
-import { Link } from "react-router";
+import { Link, NavLink } from "react-router";
 import { IoLogOut } from "react-icons/io5";
 
-const AuthMenu = ({ user, signOutUser }) => {
+
+
+const AuthMenu = ({ user, signOutUser,className }) => {
   if (!user) {
     return (
       <>
-        <Link to="/login" className="btn-gradient">Login</Link>
-        <Link to="/register" className="btn-gradient">Register</Link>
+        <NavLink to="/login" 
+        className={({ isActive }) =>
+          isActive
+            ? "btn-gradient btn-gradient-active"
+            : `${className} hover:bg-gray-100 dark:hover:bg-gray-700 transition`
+        }
+        
+        >Login</NavLink>
+        
+        <NavLink to="/register" className={({ isActive }) =>
+          isActive
+            ? "btn-gradient btn-gradient-active"
+            : `${className} hover:bg-gray-100 dark:hover:bg-gray-700 transition`
+        }>Register</NavLink>
       </>
     );
   }

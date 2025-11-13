@@ -14,6 +14,7 @@ const MyListings = () => {
   const [listings, setListings] = useState([]);
   const [selectedListing, setSelectedListing] = useState(null);
   const [modalOpen, setModalOpen] = useState(false);
+  const [loadingListings, setLoadingListings] = useState(true);
 
   // Fetch listings for logged-in user
   useEffect(() => {
@@ -26,6 +27,8 @@ const MyListings = () => {
       } catch (err) {
         console.error(err);
         toast.error("Failed to load your listings!");
+      }finally{
+        setLoadingListings(false)
       }
     };
 
@@ -90,7 +93,7 @@ const handleModalSubmit = async (e) => {
 
   try {
     const res = await axios.put(
-      `/my-listings/${selectedListing._id}`, // ✅ same route, but correct baseURL
+      `/my-listings/${selectedListing._id}`, 
       updatedData,
       {
         headers: { "Content-Type": "application/json" },
@@ -121,7 +124,7 @@ const handleModalSubmit = async (e) => {
 
 
 
-  if (loading) return <Loading />;
+  if (loading || loadingListings) return <Loading />;
 
   return (
     <>

@@ -1,5 +1,5 @@
 // src/components/AddListings/AddListings.jsx
-import React from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
 import useAuth from "../../hook/useAuth";
 import useAxios from "../../hook/useAxios";
@@ -9,6 +9,7 @@ import Loading from "../../component/Loading";
 const AddListings = () => {
   const { users,loading } = useAuth();
   const axios = useAxios();
+    const [loadings, setLoadings] = useState(false);
 
   const handleAddListings = async (e) => {
     e.preventDefault();
@@ -38,6 +39,7 @@ const AddListings = () => {
     };
 
     try {
+      setLoadings(true)
       const res = await axios.post("/Listings", listings);
       if (res.data.insertedId) {
         toast.success("Listing added successfully!");
@@ -45,9 +47,11 @@ const AddListings = () => {
       }
     } catch (err) {
       toast.error(err.message);
+    }finally{
+      setLoadings(false)
     }
   };
-  if(loading)return<Loading></Loading>
+  if(loading||loadings)return<Loading></Loading>
 
   return (
     <motion.div

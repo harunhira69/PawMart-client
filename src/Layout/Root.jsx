@@ -1,10 +1,11 @@
 import React, { Suspense } from 'react';
 
-import Footer from '../component/Footer';
+
 import { Outlet } from 'react-router';
 import { Toaster } from 'react-hot-toast';
 import Loading from '../component/Loading';
 import Navbar from '../component/Navbar/Navbar';
+import Footer from '../component/Footer/Footer';
 
 const Root = () => {
   return (
@@ -16,10 +17,10 @@ const Root = () => {
 
       {/* Main Content */}
       <main className="flex-1 container mx-auto px-4 py-6">
-        {/* Toaster for notifications */}
+        
         <Toaster position="top-right" />
 
-        {/* Suspense for lazy-loaded routes */}
+   
         <Suspense fallback={<Loading />}>
           <Outlet />
         </Suspense>

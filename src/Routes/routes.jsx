@@ -12,6 +12,9 @@ import AllPetsSupplies from "../Pages/AllPetsSupplies/AllPetsSupplies";
 import ProductDetails from "../Pages/ProductDetails/ProductDetails";
 import MyOrder from "../Pages/MyOrder/MyOrder";
 import MyListings from "../Pages/MyListings/MyListings";
+import Contact from "../component/Footer/Contact";
+import Terms from "../component/Footer/Terms";
+import Privacy from "../component/Footer/Privacy";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -63,7 +66,28 @@ const router = createBrowserRouter([
   element:<PrivateRoutes>
     <MyListings></MyListings>
   </PrivateRoutes>
+},
+{
+  path:'/contact',
+  element:<Contact></Contact>
+},
+{
+  path:'terms',
+  element:<Terms></Terms>
+},
+{
+  path:'privacy',
+  element:<Privacy></Privacy>
 }
+
+
+
+
+
+
+
+
+
     ]
   },
 ]);

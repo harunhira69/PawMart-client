@@ -40,7 +40,7 @@ const Navmenu = ({ user, className }) => {
             <FaPlus className="inline mr-1" /> Add Listing
           </NavLink>
 
-          <Link
+          <NavLink
             to="/my-listings"
             className={({ isActive }) =>
               isActive
@@ -49,7 +49,7 @@ const Navmenu = ({ user, className }) => {
             }
           >
             <FaClipboardList className="inline mr-1" /> My Listings
-          </Link>
+          </NavLink>
 
           <NavLink
             to="/my-orders"

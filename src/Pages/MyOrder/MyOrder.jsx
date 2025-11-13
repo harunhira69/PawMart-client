@@ -156,7 +156,7 @@ const MyOrder = () => {
               <img src={order.image} alt={order.listingName} className="w-full h-40 object-cover rounded mb-3" />
               <h2 className="text-lg font-semibold">{order.listingName}</h2>
               <p className="text-gray-600">Quantity: {order.quantity}</p>
-              <p className="text-gray-600">Price: {order.price === 0 ? "Free" : `৳ ${order.price}`}</p>
+              <p className="text-gray-600">Price: {order.price === 0 ? "Free" : `$ ${order.price}`}</p>
               <p className="text-gray-600">Pickup Location: {order.address}</p>
               <p className="text-gray-600">Date: {order.date}</p>
               {order.notes && <p className="text-gray-500 mt-2">Notes: {order.notes}</p>}
@@ -183,7 +183,7 @@ const MyOrder = () => {
               <th className="border px-3 py-2">Address</th>
               <th className="border px-3 py-2">Date</th>
               <th className="border px-3 py-2">Phone</th>
-              <th className="border px-3 py-2">Action</th>
+        
             </tr>
           </thead>
           <tbody>
@@ -196,14 +196,14 @@ const MyOrder = () => {
                 <td className="border px-3 py-2">{order.address}</td>
                 <td className="border px-3 py-2">{order.date}</td>
                 <td className="border px-3 py-2">{order.phone || "N/A"}</td>
-                <td className="border px-3 py-2">
+                {/* <td className="border px-3 py-2">
                   <button
                     onClick={() => handleDelete(order._id)}
                     className="bg-red-500 text-white px-2 py-1 rounded hover:bg-red-600"
                   >
                     Delete
                   </button>
-                </td>
+                </td> */}
               </tr>
             ))}
           </tbody>

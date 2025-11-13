@@ -27,7 +27,7 @@ const Navbar = () => {
           <img
             src="https://i.ibb.co/8LNS81gF/Lucid-Origin-A-professional-minimalist-logo-icon-for-a-modern-1.jpg"
             alt="logo"
-            className="w-12 h-12 rounded-full"
+            className="w-9 h-9 rounded-full"
           />
           <h1 className="text-2xl md:text-3xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500">
             PawMart

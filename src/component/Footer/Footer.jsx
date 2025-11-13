@@ -15,7 +15,7 @@ const Footer = () => {
     <footer className="bg-linear-to-r from-indigo-600 via-purple-600 to-pink-600 text-white mt-16">
       <div className=" px-6 py-12 grid grid-cols-1 md:grid-cols-3 gap-8">
         
-        {/* Logo / Description */}
+ 
         <div className="flex flex-col space-y-4">
           <h1 className="text-2xl font-bold tracking-tight flex items-center">
             <span className="bg-white text-indigo-700 px-3 py-1 rounded-lg mr-2">🐾</span>
@@ -56,11 +56,11 @@ const Footer = () => {
           </ul>
         </div>
 
-        {/* Newsletter / Copyright */}
+
         <div className="flex flex-col justify-end md:items-end mt-6 md:mt-0 space-y-2">
           <p className="text-gray-200 text-sm">&copy; {new Date().getFullYear()} PawMart. All rights reserved.</p>
-          <p className="text-gray-300 text-xs">Made with ❤️ for pet lovers</p>
-          {/* Optional Newsletter */}
+          <p className="text-gray-300 text-xs">Connecting pets with loving homes.</p>
+   
         <div className="mt-3 flex">
            <form onSubmit={handleSubscribe}>
             <input

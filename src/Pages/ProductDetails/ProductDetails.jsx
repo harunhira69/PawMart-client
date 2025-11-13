@@ -14,11 +14,8 @@ const ProductDetails = () => {
   const { users } = useAuth();
   const [item, setItem] = useState(null);
   const [loading, setLoading] = useState(true);
-
-  const [isOpen, setIsOpen] = useState(false); // modal state
-  const handleOpenOrderModal = () => {
-  setIsOpen(true);
-};
+  const [isOpen, setIsOpen] = useState(false); 
+  const [submitting, setSubmitting] = useState(false); 
 
   useEffect(() => {
     const fetchItem = async () => {
@@ -33,23 +30,20 @@ const ProductDetails = () => {
     };
     fetchItem();
   }, [axios, id]);
-    const openModal = () => setIsOpen(true);
-  const closeModal = () => setIsOpen(false);
 
-  if (loading) return <Loading></Loading>
-  if (!item) return <p className="text-center mt-10">Item not found.</p>;
-
+  if (loading) return <Loading />;
+  if (!item) return <p className="text-center mt-10 text-gray-800 dark:text-gray-200">Item not found.</p>;
 
   const handleOrder = async (e) => {
     e.preventDefault();
+    setSubmitting(true); 
 
     const form = e.target;
-
     const orderData = {
       buyerName: users?.displayName,
       buyerEmail: users?.email,
       listingId: id,
-      image:item.image,
+      image: item.image,
       listingName: item.name,
       quantity: item.category === "Pets (Adoption)" ? 1 : form.quantity.value,
       price: item.price === "Free for Adoption" ? 0 : item.price,
@@ -63,37 +57,35 @@ const ProductDetails = () => {
     try {
       await axios.post("/order", orderData);
       toast.success("Order submitted successfully!");
-       closeModal();
+      setIsOpen(false); 
       form.reset();
     } catch (err) {
       toast.error(err.message);
+    } finally {
+      setSubmitting(false); 
     }
   };
 
   return (
     <div className="container mx-auto p-6">
+      {/* Product Card */}
+      <CardDetails item={item} onOrderClick={() => setIsOpen(true)} />
 
-<CardDetails item={item} onOrderClick={handleOpenOrderModal} ></CardDetails>
-           <AnimatedModal 
-            isOpen={isOpen}
-  onClose={setIsOpen}
-  title="Place Your Order"
-            
-            >
-                <OrderForm
-              item={item}
-              users={users}
-              handleOrder={handleOrder}
-              closeModal={closeModal} 
-            />
-            </AnimatedModal>
+      {/* Modal */}
+      <AnimatedModal 
+        isOpen={isOpen}
+        onClose={() => setIsOpen(false)}
+        title="Place Your Order"
+      >
 
-   
-
-    
-
-
-
+        <OrderForm
+          item={item}
+          users={users}
+          handleOrder={handleOrder}
+          closeModal={() => setIsOpen(false)}
+          submitting={submitting}
+        />
+      </AnimatedModal>
     </div>
   );
 };
