@@ -4,7 +4,7 @@ import { useNavigate } from "react-router";
 import useAuth from "./useAuth";
 
 const instance = axios.create({
-  baseURL: "http://localhost:3000", // change to your production base URL
+  baseURL: "https://pawmart-server-black.vercel.app", // change to your production base URL
 });
 
 const useAxiosSecure = () => {
