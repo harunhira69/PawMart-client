@@ -75,7 +75,7 @@ const ProductDetails = () => {
       <AnimatedModal 
         isOpen={isOpen}
         onClose={() => setIsOpen(false)}
-        title="Place Your Order"
+        title={<span className="text-indigo-600 font-semibold">Place Your Order</span>}
       >
 
         <OrderForm

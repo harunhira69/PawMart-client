@@ -107,7 +107,7 @@ const MyOrder = () => {
     const tableRows = orders.map((order) => [
       order.listingName,
       order.buyerName || users.displayName,
-      order.price === 0 ? "Free" : `৳ ${order.price}`,
+      order.price === 0 ? "Free" : `$ ${order.price}`,
       order.quantity,
       order.address,
       order.date,

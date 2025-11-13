@@ -81,7 +81,7 @@ const MyListings = () => {
 
 const handleModalSubmit = async (e) => {
   e.preventDefault();
-  console.log("Sending data:", selectedListing);
+  // console.log("Sending data:", selectedListing);
 
   const updatedData = {
     name: selectedListing.name,
@@ -89,7 +89,7 @@ const handleModalSubmit = async (e) => {
     price: selectedListing.price,
     location: selectedListing.location,
   };
-  console.log({updatedData})
+  // console.log({updatedData})
 
   try {
     const res = await axios.put(

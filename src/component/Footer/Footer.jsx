@@ -8,7 +8,7 @@ const Footer = () => {
   const handleSubscribe = e=>{
     e.preventDefault();
     const name = e.target.email.value;
-    console.log({name})
+    // console.log({name})
     toast.success('Congratulation')
   }
   return (

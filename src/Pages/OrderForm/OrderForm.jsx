@@ -5,7 +5,7 @@ const OrderForm = ({ item, users, handleOrder, closeModal }) => {
   return (
     <form
       onSubmit={handleOrder}
-      className="space-y-5 p-4 sm:p-6 max-h-[90vh] overflow-y-auto"
+      className="space-y-5 p-4 bg-base-100 sm:p-6 max-h-[90vh] overflow-y-auto"
     >
       {/* Item Info */}
       <div className="flex items-center  gap-4">
