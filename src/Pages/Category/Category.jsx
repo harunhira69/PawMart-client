@@ -5,9 +5,9 @@ import petsBanner from "../../assets/banner.jpg";
 const Category = () => {
  const categories = [
   { name: "Pets (Adoption)", bg: "bg-pink-50" },
-  { name: "Pet Food", bg: "bg-yellow-50" }, // make sure DB also has this
+  { name: "Pet Food", bg: "bg-yellow-50" }, 
   { name: "Accessories", bg: "bg-green-50" },
-  { name: "Pet Care", bg: "bg-blue-50" } // match exactly the DB value
+  { name: "Pet Care", bg: "bg-blue-50" } 
 ];
 
 

@@ -64,7 +64,7 @@ const AllPetsSupplies = () => {
         />
       </div>
 
-      {/* Products Grid */}
+ 
       <motion.div
         className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-8"
         initial={{ opacity: 0, y: 30 }}
@@ -108,7 +108,7 @@ const AllPetsSupplies = () => {
                 <Link to={`/product/${filter._id}`} className="mt-auto">
                   <motion.button
                     whileTap={{ scale: 0.95 }}
-                    className="w-full bg-gradient-to-r from-indigo-500 to-pink-500 text-white rounded-lg py-2 font-medium hover:from-indigo-600 hover:to-pink-600 transition-all duration-300"
+                    className="w-full bg-linear-to-r from-indigo-500 to-pink-500 text-white rounded-lg py-2 font-medium hover:from-indigo-600 hover:to-pink-600 transition-all duration-300"
                   >
                     See Details
                   </motion.button>

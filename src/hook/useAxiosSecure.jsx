@@ -4,7 +4,7 @@ import { useNavigate } from "react-router";
 import useAuth from "./useAuth";
 
 const instance = axios.create({
-  baseURL: "https://pawmart-server-black.vercel.app", // change to your production base URL
+  baseURL: "https://pawmart-server-black.vercel.app", 
 });
 
 const useAxiosSecure = () => {
@@ -12,7 +12,7 @@ const useAxiosSecure = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    // Attach token before request
+
     const requestInterceptor = instance.interceptors.request.use(
       async (config) => {
         if (users) {
@@ -26,7 +26,7 @@ const useAxiosSecure = () => {
       (error) => Promise.reject(error)
     );
 
-    // Handle 401/403 globally
+
     const responseInterceptor = instance.interceptors.response.use(
       (response) => response,
       (error) => {

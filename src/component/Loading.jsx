@@ -13,7 +13,7 @@ const Loading = ({ size = 16, message = "Loading..." }) => {
         </div>
       </div>
 
-      {/* Message */}
+
       {message && (
         <p className="mt-4 text-gray-600 text-lg font-medium">{message}</p>
       )}

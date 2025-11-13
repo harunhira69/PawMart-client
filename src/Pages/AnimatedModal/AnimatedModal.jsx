@@ -1,4 +1,4 @@
-// src/components/AnimatedModal/AnimatedModal.jsx
+
 import { animated, useTransition } from "@react-spring/web";
 import * as Dialog from "@radix-ui/react-dialog";
 import { styled } from "@stitches/react";
@@ -44,7 +44,6 @@ const AnimatedModal = ({ isOpen, onClose, title, children }) => {
 
 export default AnimatedModal;
 
-// ===== STYLES =====
 
 const Overlay = styled("div", {
   position: "fixed",

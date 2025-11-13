@@ -51,7 +51,7 @@ const CategoryProducts = () => {
         Discover amazing pets and supplies in this category. Click on any product to view details or adopt.
       </p>
 
-      {/* Products Grid */}
+ 
       <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
         {products.map((p) => (
           <div
@@ -64,9 +64,9 @@ const CategoryProducts = () => {
               className="w-full h-56 object-cover transition-transform duration-500 group-hover:scale-105"
             />
 
-            {/* Quick overlay on hover */}
+         
             <div className="absolute inset-0  bg-opacity-20 opacity-0 group-hover:opacity-100 transition duration-300 flex justify-center items-center space-x-4">
-              <button className="p-3 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 rounded-full text-white hover:scale-110 transition-transform">
+              <button className="p-3 bg-linear-to-r from-indigo-500 via-purple-500 to-pink-500 rounded-full text-white hover:scale-110 transition-transform">
                 <Heart className="w-5 h-5" />
               </button>
               <Link
@@ -90,7 +90,7 @@ const CategoryProducts = () => {
         ))}
       </div>
 
-      {/* Optional CTA Section */}
+
       <div className="mt-16 text-center">
         <Link
           to="/pets"
