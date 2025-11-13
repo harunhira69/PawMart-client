@@ -78,27 +78,47 @@ const MyListings = () => {
 
 const handleModalSubmit = async (e) => {
   e.preventDefault();
+  console.log("Sending data:", selectedListing);
+
+  const updatedData = {
+    name: selectedListing.name,
+    category: selectedListing.category,
+    price: selectedListing.price,
+    location: selectedListing.location,
+  };
+  console.log({updatedData})
+
   try {
-    const res = await axios.put(`/my-listings/${selectedListing._id}`, selectedListing);
-
-    if (!res || !res.data?._id) {
-      toast.error("Update failed!");
-      return;
-    }
-
-    // Update local state immediately
-    setListings((prev) =>
-      prev.map((item) => (item._id === res.data._id ? res.data : item))
+    const res = await axios.put(
+      `/my-listings/${selectedListing._id}`, // ✅ same route, but correct baseURL
+      updatedData,
+      {
+        headers: { "Content-Type": "application/json" },
+      }
     );
 
-    toast.success("Listing updated successfully!");
-    setModalOpen(false);
-    setSelectedListing(null);
+    console.log("Response from server:", res.data);
+
+    if (res.data && res.data._id) {
+      setListings((prev) =>
+        prev.map((item) =>
+          item._id === res.data._id ? res.data : item
+        )
+      );
+      toast.success("Listing updated successfully!");
+      setModalOpen(false);
+      setSelectedListing(null);
+    } else {
+      toast.error("Failed to update listing!");
+    }
   } catch (err) {
-    const msg = err?.response?.data?.message || "Failed to update listing!";
-    toast.error(msg);
+    console.error("Update error:", err.response?.data || err.message);
+    toast.error(err?.response?.data?.message || "Update failed!");
   }
 };
+
+
+
 
 
   if (loading) return <Loading />;

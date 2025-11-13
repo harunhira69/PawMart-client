@@ -12,8 +12,21 @@ const AddListings = () => {
 
   const handleAddListings = async (e) => {
     e.preventDefault();
+        const image = e.target.imageURL.value.trim();
+    const description = e.target.description.value.trim();
+  
+  const imageRegex = /^(https?:\/\/.*\.(?:png|jpg|jpeg|gif|webp|svg))$/i;
+  if (!imageRegex.test(image)) {
+    toast.error("Please enter a valid image URL (jpg, png, jpeg, gif, webp, svg).");
+    return;
+  }
 
-    const listings = {
+ 
+  const wordCount = description.split(/\s+/).filter((w) => w.length > 0).length;
+  if (wordCount < 10) {
+    toast.error("Description must contain at least 10 words.");
+    return;
+  }   const listings = {
       name: e.target.name.value,
       category: e.target.category.value,
       price: e.target.price.value,

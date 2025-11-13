@@ -1,8 +1,9 @@
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import useAuth from "../hook/useAuth";
 import toast from "react-hot-toast";
 
 const Register = () => {
+  const navigate = useNavigate()
   const { signInGoogle, createUserEmail, updateUserProfile } = useAuth();
 
   const handleRegister = (e) => {
@@ -38,6 +39,7 @@ const Register = () => {
         console.log(result);
         updateUserProfile(displayName, photoURL);
         toast.success("User created successfully!", { id: "create-user" });
+        navigate('/login')
         form.reset();
       })
       .catch((err) => {
@@ -47,9 +49,10 @@ const Register = () => {
 
   const handleGoogleSignIn = () => {
     signInGoogle()
-      .then((result) => {
+      .then(() => {
         toast.success("Successfully Registered");
-        console.log(result.user);
+        navigate('/')
+        // console.log(result.user);
       })
       .catch((err) => {
         toast.error(err.message);

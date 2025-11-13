@@ -76,7 +76,7 @@ const RecentListings = () => {
                 </h3>
                 <p className="text-gray-600 dark:text-gray-300 text-sm mb-1">{item.category}</p>
                 <p className="text-gray-800 dark:text-gray-200 font-medium mb-2">
-                  {item.price === "Free for Adoption" ? item.price : `৳${item.price}`}
+                  {item.price === "Free for Adoption" ? item.price : `$${item.price}`}
                 </p>
                 <p className="text-gray-500 dark:text-gray-400 text-sm mb-3">{item.location}</p>
               </div>

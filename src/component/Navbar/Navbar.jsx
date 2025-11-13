@@ -7,35 +7,36 @@ import useAuth from "../../hook/useAuth";
 
 const Navbar = () => {
   const { users, signOutUser } = useAuth();
-  const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
+  const [theme, setTheme] = useState(
+    localStorage.getItem("theme") || "light"
+  );
   const [mobileOpen, setMobileOpen] = useState(false);
 
+
   useEffect(() => {
-    document.documentElement.classList.toggle("dark", theme === "dark");
+    document.documentElement.setAttribute("data-theme", theme); // DaisyUI uses data-theme
+    document.documentElement.classList.toggle("dark", theme === "dark"); // Tailwind dark mode
     localStorage.setItem("theme", theme);
   }, [theme]);
 
   return (
-    <nav className="w-full bg-white/80 dark:bg-gray-900/80 backdrop-blur-md shadow-md sticky top-0 z-50 transition-all duration-300 border-b border-gray-200 dark:border-gray-700">
+    <nav className="w-full bg-base-100 dark:bg-gray-900 sticky top-0 z-50 shadow-md transition-all">
       <div className="max-w-7xl mx-auto px-5 md:px-8 py-3 flex items-center justify-between">
         {/* Logo */}
-        <div className="flex items-center  gap-2">
-          <img 
-            src="https://i.ibb.co.com/8LNS81gF/Lucid-Origin-A-professional-minimalist-logo-icon-for-a-modern-1.jpg"
+        <div className="flex items-center gap-1">
+          <img
+            src="https://i.ibb.co/8LNS81gF/Lucid-Origin-A-professional-minimalist-logo-icon-for-a-modern-1.jpg"
             alt="logo"
-            className="w-10 h-10 rounded-full"
+            className="w-12 h-12 rounded-full"
           />
-          <h1 className="text-2xl md:text-3xl font-extrabold bg-clip-text text-transparent bg-linear-to-r from-indigo-500 via-purple-500 to-pink-500">
+          <h1 className="text-2xl md:text-3xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500">
             PawMart
           </h1>
         </div>
 
         {/* Desktop Menu */}
-        <ul className="hidden lg:flex items-center gap-8 text-[17px] font-medium text-gray-700 dark:text-gray-200">
-          <Navmenu
-            user={users}
-            className="px-3 py-2 rounded-lg hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors duration-200"
-          />
+        <ul className="hidden lg:flex items-center gap-8 text-gray-700 dark:text-gray-200 font-medium">
+          <Navmenu user={users} className="px-3 py-2 rounded-lg transition-colors" />
         </ul>
 
         {/* Right Section */}
@@ -59,12 +60,9 @@ const Navbar = () => {
 
       {/* Mobile Dropdown */}
       {mobileOpen && (
-        <div className="lg:hidden border-t border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 px-6 py-4 animate-slide-down">
+        <div className="lg:hidden border-t border-gray-200 dark:border-gray-700 bg-base-100 dark:bg-gray-900 px-6 py-4">
           <ul className="flex flex-col gap-3 text-gray-700 dark:text-gray-200 font-medium">
-            <Navmenu
-              user={users}
-              className="px-3 py-2 rounded-lg hover:bg-blue-100 dark:hover:bg-gray-800 transition"
-            />
+            <Navmenu user={users} className="px-3 py-2 rounded-lg transition-colors" />
           </ul>
 
           <div className="flex items-center gap-4 mt-4">
