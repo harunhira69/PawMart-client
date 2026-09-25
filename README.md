@@ -3,8 +3,9 @@
 ### 🌐 Live Website  
 🔗 **Client:** [https://pawmart-adf30.web.app](https://pawmart-adf30.web.app)
 
-### 🖥️ Server Link  
-🔗 **Server (Hosted on Vercel):** [https://pawmart-server-black.vercel.app](https://pawmart-server-black.vercel.app)
+### 🖥️ Backend
+🔗 **Live Server:** [https://pawmart-server-black.vercel.app](https://pawmart-server-black.vercel.app)  
+🔗 **Server Repository:** [https://github.com/harunhira69/PawMart-server](https://github.com/harunhira69/PawMart-server)
 
 ---
 
@@ -66,8 +67,9 @@ The platform is designed to promote responsible pet ownership while offering a u
 
 - **Public Routes:** Home, Pets & Supplies, Login, Register, 404  
 - **Private Routes:** Add Listing, My Listings, My Orders, Listing Details  
-- Firebase Authentication ensures secure access and **persists login sessions**.  
-- Authorized domains added for **Firebase Hosting compatibility**.
+- Firebase Authentication handles client-side sign-in and session persistence.  
+- Private routes protect authenticated client workflows.  
+- The backend performs Firebase token verification on selected protected operations; additional server-side hardening is tracked in the server repository.
 
 ---
 
